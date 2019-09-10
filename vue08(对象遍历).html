@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>vue对象遍历</title>
+    </head>
+    <body>
+        <div id="app">
+            <p v-for='val in user'>{{val}}</p><hr/>
+
+            <p v-for='(val,key) in user'>{{key}} : {{val}}</p><hr/>
+        
+            <!-- 注意：在遍历对象的键值对的时候，除了有val key，还有一个下标索引在第三个位置上 -->
+            <p v-for='(val,key,index) in user'>{{index}} : {{key}} : {{val}}</p>
+        </div>
+    </body>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue ({
+            el: '#app',
+            data: {
+                user: {
+                    id: 01,
+                    name: 'zhangsan',
+                    age: '20',
+                    sex: '男'
+                }
+            },
+            methods: {}
+        });
+    </script>
+</html>

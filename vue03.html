@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>vue修饰符</title>
+        <style>
+            .inner {
+                height: 200px;
+                background-color: cyan;
+            }
+            .outer {
+                background-color: gold;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- .self执行自身 -->
+        <!-- <div id="app" class="inner" v-on:click.self="divClick">
+            <input type="button" class="outer" value="按钮" @click="btnClick">
+        </div> -->
+
+        <!-- .prevent阻止默认事件 -->
+        <!-- <div id="app" class="inner" v-on:click="divClick">
+            <a href="http://www.baidu.com" @click.prevent.stop="aClick">百度一下</a>
+        </div> -->
+
+        <!-- .capture添加事件帧听器时使用事件捕获模式 -->
+        <!-- <div id="app" class="inner" @click.capture="divClick">
+            <input type="button" class="outer" value="按钮" @click.stop="btnClick">
+        </div> -->
+
+        <!-- .stop阻止冒泡 -->
+        <div id="app" class="inner" v-on:click="divClick">
+            <input type="button" class="outer" value="按钮" @click.stops="btnClick">
+        </div>
+    </body>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue ({
+            el: '#app',
+            data: {},
+            methods: {
+                btnClick() {
+                    console.log('触发了按钮的点击事件');
+                },
+                divClick() {
+                    console.log('触发了div的点击事件');
+                },
+                aClick() {
+                    console.log('触发了a标签的点击事件');
+                }
+            }
+        });
+    </script>
+</html>

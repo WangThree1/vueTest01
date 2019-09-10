@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>vue样式</title>
+        <style>
+            .red {
+                color: red;
+            }
+            .thin {
+                /* 字体粗细 */
+                font-weight: 100; 
+            }
+            .italic {
+                /* 斜体 */
+                font-style: italic;
+            }
+            .active {
+                /* 字符间距 */
+                letter-spacing: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+           <h1 class="red thin italic active">这是一盒好吃的月饼！</h1>
+        
+           <!-- 直接传递一个数组，="['','']" -->
+           <h1 :class="['red','thin','italic']">这是两盒好吃的月饼！</h1>
+
+           <!-- 三元表达式（三目运算） -->
+           <h1 :class="['red','thin',isitalic ? 'italic':'']">这是三盒好吃的月饼！</h1>
+
+           <!-- 用对象的方式替代三元表达式 -->
+           <h1 :class="['red','thin',{'active':isitalic}]">这是四盒好吃的月饼！</h1>
+
+           <!-- 全部使用对象形式 -->
+           <h1 :class="[{'red':false},{'thin':true},{'italic':true},{'active':false}]">这是五盒好吃的月饼！</h1>
+
+           <!-- 引用vue中data数据作为class参数 -->
+           <h1 :class="classObj">这是六盒好吃的月饼！</h1>
+
+        </div>
+    </body>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+           el: '#app',
+           data: {
+               isitalic: true,
+               classObj: {
+                   red: true,
+                   thin: true,
+                   italic: false,
+                   active: true
+               },
+               msg: '今天天气真好!'
+           },
+           methods: {}
+        });
+    </script>
+</html>

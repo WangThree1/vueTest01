@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>vueTest01</title>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{info}}</p>
+            <input type="button" value="开始"/>
+            <input type="button" value="结束"/>
+        </div>
+    </body>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue ({
+            el: '#app',
+            data: {
+                info: '你好，你好,hahahha！',
+                status: null
+            },
+            methods: {
+                go() {
+                    //如果当前有定时器在运行，则直接return
+                    if(this.status != null) {
+                        return;                      
+                    }
+                    //开始定时器
+                    this.status = setInterval(() => {
+                        this.info = this.info.substring(1) + this.info.sunstring(0,1);
+                    },200);
+                },
+                stop() {
+                    clearInterval(this.status);
+                }
+            }
+        });
+    </script>
+</html>

@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>vue在线计算器</title>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" v-model="n1"/>
+            <!-- v-model实现标签数据的双向绑定 上面语句相当于下面的语句-->
+            <!-- <input :value="test" @input="test= $event.target.value">语法糖 -->
+            <select v-model="opt">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">÷</option>
+            </select>
+            <input type="text" v-model="n2"/>
+            <input type="button" value="=" v-on:click="getResult"/>
+            <input type="text" v-model="result"/>
+            <p>{{n1}} {{opt}} {{n2}} = {{result}}</p>
+        </div>
+    </body>
+    <script src="js/vue.js"></script>
+    <script>
+        var nm = new Vue({
+            el: '#app',
+            data: {
+                n1: 0,
+                n2: 0,
+                result: 0,
+                opt: '+'
+            },
+            methods: {
+                getResult() {
+                    switch(this.opt) {
+                        case '+':
+                           this.result = parseInt(this.n1) + parseInt(this.n2);
+                           break;
+                        case '-':
+                           this.result = parseInt(this.n1) - parseInt(this.n2);
+                           break;
+                        case '*':
+                           this.result = parseInt(this.n1) * parseInt(this.n2);
+                           break;
+                        case '/':
+                           this.result = parseInt(this.n1) / parseInt(this.n2);
+                           break;   
+                    }
+                }
+            }
+        })
+    </script>
+</html>
