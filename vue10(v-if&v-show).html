@@ -1,12 +1,27 @@
 <html>
     <head>
-        <title>v-if&v-show</title>
+        <title>v-if&v-show区别</title>
     </head>
     <body>
-        
+        <div id="app">
+            <input type="button" value="切换" @click="toggle">
+            <!-- 如果需要频繁切换，用v-show适宜，如果不需要频繁切换，用v-if适宜 -->
+            <h1 v-show="flag">HELLO!</h1>
+            <h1 v-if="flag">hello!</h1>
+        </div>
     </body>
     <script src="js/vue.js"></script>
     <script>
-        
+        var vm = new Vue ({
+            el: '#app',
+            data: {
+                flag: true
+            },
+            methods: {
+                toggle: function() {
+                    this.flag = !this.flag;
+                }
+            }
+        });
     </script>
 </html>
